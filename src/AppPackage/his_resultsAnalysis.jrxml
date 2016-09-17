@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subject_resultsAnalysis" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a308e67-2f04-4562-a7ed-55bc3d2777c1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select CASE final_marks.gender WHEN 'male' THEN 'Boys' ELSE 'Boys' END as 'gender',teachers.histroy as 'teachers',
+(select class from final_marks where class_name = 'East' and class = '1') as 'class',
+(select class_name from final_marks where class_name = 'East' and class = '1') as 'class_name',
+(select count(id) from final_marks where histroy_g = 'A' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'A',
+(select count(id) from final_marks where histroy_g = 'A-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'A-',
+(select count(id) from final_marks where histroy_g = 'B+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'B+',
+(select count(id) from final_marks where histroy_g = 'B' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'B',
+(select count(id) from final_marks where histroy_g = 'B-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'B-',
+(select count(id) from final_marks where histroy_g = 'C+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'C+',
+(select count(id) from final_marks where histroy_g = 'C' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'C',
+(select count(id) from final_marks where histroy_g = 'C-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'C-',
+(select count(id) from final_marks where histroy_g = 'D+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'D+',
+(select count(id) from final_marks where histroy_g = 'D' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'D',
+(select count(id) from final_marks where histroy_g = 'D-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'D-',
+(select count(id) from final_marks where histroy_g = 'E' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'E',
+(select count(id) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'TOT',
+(select sum(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'TOT MRKS',
+(select avg(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'male' and histroy <>'') as 'M.MRK'
+from final_marks INNER JOIN teachers ON teachers.class = (select class from final_marks where class_name = 'East' and class = '1')
+where final_marks.class = '1' and final_marks.class_name = 'East' and final_marks.term = '1' and final_marks.year = '2015' and final_marks.histroy <>'' group by teachers.histroy
+
+union
+
+select DISTINCT CASE final_marks.gender WHEN 'female' THEN 'Girls' ELSE 'Girls' END as 'gender',teachers.histroy as 'teachers',
+(select class from final_marks where class_name = 'East' and class = '1') as 'class',
+(select class_name from final_marks where class_name = 'East' and class = '1') as 'class_name',
+(select count(id) from final_marks where histroy_g = 'A' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'A',
+(select count(id) from final_marks where histroy_g = 'A-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'A-',
+(select count(id) from final_marks where histroy_g = 'B+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'B+',
+(select count(id) from final_marks where histroy_g = 'B' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'B',
+(select count(id) from final_marks where histroy_g = 'B-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'B-',
+(select count(id) from final_marks where histroy_g = 'C+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'C+',
+(select count(id) from final_marks where histroy_g = 'C' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'C',
+(select count(id) from final_marks where histroy_g = 'C-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'C-',
+(select count(id) from final_marks where histroy_g = 'D+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'D+',
+(select count(id) from final_marks where histroy_g = 'D' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'D',
+(select count(id) from final_marks where histroy_g = 'D-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'D-',
+(select count(id) from final_marks where histroy_g = 'E' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'E' ,
+(select count(id) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'TOT',
+(select sum(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'TOT MRKS',
+(select avg(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and gender = 'female' and histroy <>'') as 'M.MRK'
+from final_marks INNER JOIN teachers ON  teachers.class = (select class from final_marks where class_name = 'East' and class = '1')
+where final_marks.class = '1' and final_marks.class_name = 'East' and final_marks.term = '1' and final_marks.year = '2015' and final_marks.histroy <>'' group by teachers.histroy
+
+union all
+
+select DISTINCT CASE final_marks.gender WHEN 'female' THEN 'Both' ELSE 'Both' END as 'gender',teachers.histroy as 'teachers',
+(select class from final_marks where class_name = 'East' and class = '1') as 'class',
+(select class_name from final_marks where class_name = 'East' and class = '1') as 'class_name',
+(select count(id) from final_marks where histroy_g = 'A' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'A',
+(select count(id) from final_marks where histroy_g = 'A-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'A-',
+(select count(id) from final_marks where histroy_g = 'B+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'B+',
+(select count(id) from final_marks where histroy_g = 'B' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'B',
+(select count(id) from final_marks where histroy_g = 'B-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'B-',
+(select count(id) from final_marks where histroy_g = 'C+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'C+',
+(select count(id) from final_marks where histroy_g = 'C' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'C',
+(select count(id) from final_marks where histroy_g = 'C-' and class = '1' and class_name = 'East' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'C-',
+(select count(id) from final_marks where histroy_g = 'D+' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'D+',
+(select count(id) from final_marks where histroy_g = 'D' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'D',
+(select count(id) from final_marks where histroy_g = 'D-' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'D-',
+(select count(id) from final_marks where histroy_g = 'E' and class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'E',
+(select count(id) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'TOT',
+(select sum(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'TOT MRKS',
+(select avg(histroy) from final_marks where class = '1' and class_name = 'East' and term = '1' and year = '2015' and histroy <>'') as 'M.MRK'
+from final_marks INNER JOIN teachers ON  teachers.class = (select class from final_marks where class_name = 'East' and class = '1')
+where final_marks.class = '1' and final_marks.class_name = 'East' and final_marks.term = '1' and final_marks.year = '2015' and final_marks.histroy <>'']]>
+	</queryString>
+	<field name="gender" class="java.lang.Object"/>
+	<field name="teachers" class="java.lang.Object"/>
+	<field name="class" class="java.lang.Object"/>
+	<field name="class_name" class="java.lang.Object"/>
+	<field name="A" class="java.lang.Object"/>
+	<field name="A-" class="java.lang.Object"/>
+	<field name="B+" class="java.lang.Object"/>
+	<field name="B" class="java.lang.Object"/>
+	<field name="B-" class="java.lang.Object"/>
+	<field name="C+" class="java.lang.Object"/>
+	<field name="C" class="java.lang.Object"/>
+	<field name="C-" class="java.lang.Object"/>
+	<field name="D+" class="java.lang.Object"/>
+	<field name="D" class="java.lang.Object"/>
+	<field name="D-" class="java.lang.Object"/>
+	<field name="E" class="java.lang.Object"/>
+	<field name="TOT" class="java.lang.Object"/>
+	<field name="TOT MRKS" class="java.lang.Object"/>
+	<field name="M.MRK" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="238" y="0" width="303" height="22" uuid="e6a6133f-7ad5-4bf1-b4c8-5a6ebd70a55f"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NDURURUNO SECONDARY SCHOOL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="22" width="238" height="20" uuid="5afc41aa-45e1-4c28-8bb0-40de5c16da40"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STUDENT EXAM RESULTS ANALYSIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="42" width="100" height="20" uuid="b8a5fb7f-555c-4a03-9627-93d336f9efe4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[History]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="0" width="48" height="20" uuid="5b88527c-e257-4c91-aedf-7a08a50308a5"/>
+				<textFieldExpression><![CDATA[$F{class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="29" height="20" uuid="84600c29-bb13-4210-80b6-c4c1bc4dda04"/>
+				<textFieldExpression><![CDATA[$F{class_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="345" y="0" width="35" height="20" uuid="ed1cad58-aa96-48c4-8ca1-4e90c921b25f"/>
+				<text><![CDATA[Form]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="119" y="4" width="35" height="20" uuid="683e36e3-86a8-4fdb-ac70-e600017da059"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="4" width="35" height="20" uuid="537fe8bd-6046-4b74-be86-6802d8e2322e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="4" width="35" height="20" uuid="ef84f8f6-b7ab-4dc7-ac4f-87c84edcb4e4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[B+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="4" width="35" height="20" uuid="1c9d60c4-3bda-4490-992f-8f707fbae6ae"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[B]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="4" width="33" height="20" uuid="592bfb7f-dee2-45cb-8913-e4f7d07e6f61"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[B-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="4" width="35" height="20" uuid="a51769d4-0c28-4a16-92f0-7fc635496ac6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="4" width="35" height="20" uuid="6e0d9537-9d6f-42a3-b02a-48c75ebd5ce8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="4" width="35" height="20" uuid="962d41bf-b651-44df-8237-d113cd5ca25c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="4" width="35" height="20" uuid="13ce98d4-a751-499d-8b9f-ca18c674fc99"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[D+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="4" width="35" height="20" uuid="ab117fb3-c818-43ee-b489-036301eafc6d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[D]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="4" width="35" height="20" uuid="cfb33fec-11d0-4928-bd02-b31a7fd088aa"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[D-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="4" width="35" height="20" uuid="b597bc93-3ff9-4b33-95b7-b4a539ce8c40"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="4" width="35" height="20" uuid="25b34f43-d3ff-4e32-9bfe-971a5d4a0bd1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="572" y="4" width="70" height="20" uuid="5f14dbc7-41d4-40b3-8d12-a98816542d88"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOT PTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="642" y="4" width="53" height="20" uuid="e342147b-708e-4d5c-8802-ef813d4c2e6f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MG]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement x="642" y="0" width="53" height="20" uuid="3866e2c6-c8f5-47fb-9c8b-68e82c0e1d89"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{M.MRK}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="119" y="0" width="35" height="20" uuid="05a491ce-1b76-43a3-9be0-be623c30e8ca"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{A}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="154" y="0" width="35" height="20" uuid="1cbdd6b1-7eb1-4802-9c5b-2cbf2bf98494"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{A-}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="0" width="35" height="20" uuid="cfcf97f2-786d-463f-a025-7745a8b5befc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{B+}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="224" y="0" width="35" height="20" uuid="3148e1f8-0243-4810-ab47-8315a02d1461"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{B}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="0" width="34" height="20" uuid="7c0cc95e-0f82-4059-9413-00c3845cbae1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{B-}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="293" y="0" width="35" height="20" uuid="73cc3e4c-60be-4a01-9d3a-4e3f58a19a28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{C+}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="328" y="0" width="34" height="20" uuid="bb560ca2-e6ff-4dfe-b390-a03190be8a34"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{C}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="0" width="35" height="20" uuid="ddd7c257-8f74-44db-a761-2525f8bffe8a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{C-}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="0" width="35" height="20" uuid="12725e0c-e108-4f54-8503-27dd889201d8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{D+}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="432" y="0" width="35" height="20" uuid="48c3a5a3-6345-485a-bf4d-30b3d84107a9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{D}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="467" y="0" width="35" height="20" uuid="23e32f79-a1b9-4ae8-9e5c-1e6a1b129005"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{D-}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="502" y="0" width="35" height="20" uuid="95063074-2a88-408d-bc3c-ce33fcca5c13"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{E}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="537" y="0" width="35" height="20" uuid="d672dda3-4092-408f-9283-df7ceda840c1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TOT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="572" y="0" width="70" height="20" uuid="ebc88727-72dd-49df-823a-a8da1eee2298"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TOT MRKS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="59" height="20" uuid="0dacf952-d72e-443c-8dca-9f0f10b0b434"/>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="282" splitType="Stretch">
+			<bar3DChart>
+				<chart>
+					<reportElement x="24" y="13" width="200" height="259" uuid="fbbc0899-43c8-4ec6-a1ea-4e1712042af6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{gender}]]></seriesExpression>
+						<categoryExpression><![CDATA["Form "+$F{class}+" "+$F{class_name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{M.MRK}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement x="397" y="17" width="70" height="20" uuid="db37a658-f9bd-47c1-bcec-71faf2152392"/>
+				<textFieldExpression><![CDATA[$F{M.MRK}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="17" width="97" height="20" uuid="8f07142b-64e9-4428-909b-bf942ca51b0e"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class mean grade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="49" width="100" height="20" uuid="5ef1bf35-6e79-4455-820f-84f75b776986"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject teachers:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="49" width="224" height="20" uuid="ab9b2f92-1d9d-4404-8092-0ecfac042c13"/>
+				<textFieldExpression><![CDATA[$F{teachers}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="467" y="17" width="70" height="20" uuid="a07c5201-ab15-4ef6-aa30-8cf3d5a45dd3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class grade:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="537" y="12" width="87" height="20" uuid="e27140b1-5271-4bb9-96bf-406f3655008b"/>
+				<subreportParameter name="avarage">
+					<subreportParameterExpression><![CDATA[$F{M.MRK}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\sub_resultsAnalysis_grade.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="434" y="37" width="40" height="20" uuid="19a316c2-f0bc-4324-90da-044378138f15"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="37" width="80" height="20" uuid="d58fa631-59e8-4439-bd94-c096f7c55a7d"/>
+				<textElement textAlignment="Right">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch"/>
+	</summary>
+</jasperReport>

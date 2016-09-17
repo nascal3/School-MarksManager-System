@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sub_resultsAnalysis_grade" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="17c169cc-02e3-4856-ab23-607004dffee1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="avarage" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select case
+when $P{avarage} <= 29.5 then "E"
+when $P{avarage} >= 29.6 and $P{avarage} <= 34.5 then "D-"
+when $P{avarage} >= 34.6 and $P{avarage} <= 39.5 then "D"
+when $P{avarage} >= 39.6 and $P{avarage} <= 44.5 then "D+"
+when $P{avarage} >= 44.6 and $P{avarage} <= 49.5 then "C-"
+when $P{avarage} >= 49.6 and $P{avarage} <= 54.5 then "C"
+when $P{avarage} >= 54.6 and $P{avarage} <= 59.5 then "C+"
+when $P{avarage} >= 59.6 and $P{avarage} <= 64.5 then "B-"
+when $P{avarage} >= 64.6 and $P{avarage} <= 69.5 then "B"
+when $P{avarage} >= 69.6 and $P{avarage} <= 74.5 then "B+"
+when $P{avarage} >= 74.6 and $P{avarage} <= 79.5 then "A-"
+when $P{avarage} >= 79.6 then "A"
+else "" end as 'grade'
+from final_marks limit 1]]>
+	</queryString>
+	<field name="grade" class="java.lang.Object"/>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="6" width="100" height="20" uuid="bab290f2-9a13-4bc0-bdb6-0d0615bb5f7f"/>
+				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

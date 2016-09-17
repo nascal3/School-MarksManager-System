@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="transcripts_vap" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e9931114-70b5-4127-988b-aae37a250689">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="admin_num" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="term" class="java.lang.String"/>
+	<parameter name="class" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select CASE WHEN
+( select avarage from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos = $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos = $P{admin_num})) ) IS NULL THEN 0 ELSE
+( select avarage from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos = $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos = $P{admin_num})) ) END  as 'second_last',
+(select avarage from final_marks where year = $P{year} and class = $P{class} and term = $P{term} and admin_nos = $P{admin_num}) as 'current'
+from final_marks where year = $P{year} and class = $P{class} and term = $P{term} and admin_nos = 997]]>
+	</queryString>
+	<field name="second_last" class="java.lang.Object"/>
+	<field name="current" class="java.lang.Object"/>
+	<variable name="DIFF" class="java.lang.String">
+		<variableExpression><![CDATA[$F{current}-$F{second_last}]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="4" width="100" height="20" uuid="75e7099a-108b-4ba8-8bbd-56b57a71a5bf"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DIFF}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

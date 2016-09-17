@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="position_range" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="351e885d-e645-45b7-8c82-74eb458c1bac">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="admin_num" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select *,rowid from range where admin_nos = $P{admin_num}]]>
+	</queryString>
+	<field name="admin_nos" class="java.lang.Object"/>
+	<field name="name" class="java.lang.Object"/>
+	<field name="avarage" class="java.lang.Object"/>
+	<field name="pop" class="java.lang.Object"/>
+	<field name="rowid" class="java.lang.Object"/>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="7" y="4" width="124" height="20" uuid="a831fcaf-64a4-4631-820e-8d15fdf3b11b"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rowid}+" out of "+$F{pop}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

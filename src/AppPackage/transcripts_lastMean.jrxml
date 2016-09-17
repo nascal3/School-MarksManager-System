@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="transcripts_lastMean" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d35fce2e-5117-42a4-91c9-035256eaaab1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="admin_num" class="java.lang.String"/>
+	<parameter name="class" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="term" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select CASE WHEN
+( select avarage from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos = $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos =  $P{admin_num})) ) IS NULL THEN "" ELSE
+( select avarage from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos =  $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos =  $P{admin_num})) ) END as 'last_avg',
+
+CASE WHEN
+( select grade from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos =  $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos =  $P{admin_num})) ) IS NULL THEN "" ELSE
+( select grade from final_marks where id = (SELECT CASE WHEN MAX(id) IS NULL THEN 0 ELSE MAX(id) END FROM final_marks
+WHERE admin_nos =  $P{admin_num} and id NOT IN (SELECT MAX(id) FROM final_marks WHERE admin_nos =  $P{admin_num})) ) END as 'last_grade'
+
+FROM final_marks where year = $P{year} and class = $P{class} and term = $P{term} and admin_nos = $P{admin_num}]]>
+	</queryString>
+	<field name="last_avg" class="java.lang.Object"/>
+	<field name="last_grade" class="java.lang.Object"/>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="6" width="56" height="20" uuid="e2ed0bc3-40d7-4782-a48c-a4c734336981"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mean Marks:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="6" width="56" height="20" uuid="6565b52b-d329-40b2-8275-75614863b78a"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mean Grade:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="6" width="62" height="20" uuid="7a59ad3c-8acd-41c5-8443-839aac11831d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_avg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="6" width="57" height="20" uuid="68776b13-d1dc-4eb7-bb1d-ca68826599b0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{last_grade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

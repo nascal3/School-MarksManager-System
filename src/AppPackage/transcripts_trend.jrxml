@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="transcripts_trend" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="18d297ff-f7d7-4796-aa82-6fadcd34e558">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="admin_num" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="term" class="java.lang.String"/>
+	<parameter name="class" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select admin_nos,class,term,year,avarage from final_marks where admin_nos = $P{admin_num} and year = $P{year} and term = $P{term} and class = $P{class} order by class asc,term asc, year asc]]>
+	</queryString>
+	<field name="admin_nos" class="java.lang.Object"/>
+	<field name="class" class="java.lang.Object"/>
+	<field name="term" class="java.lang.Object"/>
+	<field name="year" class="java.lang.Object"/>
+	<field name="avarage" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="143" splitType="Stretch">
+			<xyLineChart>
+				<chart>
+					<reportElement x="19" y="8" width="200" height="129" uuid="50c1c640-5f3a-4add-9890-5a50a77f47bc"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["Form "+$F{class}]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{term}]]></xValueExpression>
+						<yValueExpression><![CDATA[$F{avarage}]]></yValueExpression>
+						<labelExpression><![CDATA["Term"]]></labelExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+		</band>
+	</detail>
+</jasperReport>

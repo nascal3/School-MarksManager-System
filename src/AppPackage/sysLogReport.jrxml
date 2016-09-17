@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sysLogReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d99f6460-e9b7-4512-bdf7-fc2d9057da7c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="realPath" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM system_log WHERE date between '2015-01-23' AND '2015-02-25' order by date asc]]>
+	</queryString>
+	<field name="id" class="java.lang.Object"/>
+	<field name="date" class="java.lang.Object"/>
+	<field name="event_date" class="java.lang.Object"/>
+	<field name="user" class="java.lang.Object"/>
+	<field name="event" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="286" y="22" width="161" height="25" uuid="becc6d5f-facb-41c9-8b23-ba6e3857472d"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[System Log report]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="631" y="0" width="86" height="20" uuid="d869fb4e-20d2-4d43-ace2-feb2e760e0b4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="717" y="0" width="85" height="20" uuid="43f1b048-8612-4d62-b7d6-848fd320a02a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="224" y="0" width="303" height="22" uuid="b76b6759-5b1a-4316-8749-1920b2c98d65"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NDURURUNO SECONDARY SCHOOL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="11" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="286" y="0" width="516" height="20" uuid="a8dba455-0d02-4b51-933e-f49a08f71364"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="0" width="144" height="20" uuid="734de7d8-bd94-4bc1-84b9-c6299a66e0d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[User logged in]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="142" height="20" uuid="cd0bbe34-88da-4650-909e-bcd851eb152b"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event date / time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="142" height="20" backcolor="#FFFFCC" uuid="814bd159-7526-47f9-9ba3-25b0ef6e38e2"/>
+				<textFieldExpression><![CDATA[$F{event_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="142" y="0" width="144" height="20" backcolor="#FFFFCC" uuid="31b1b0e4-4ca0-4c99-aded-9b31659519aa"/>
+				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="286" y="0" width="516" height="20" backcolor="#FFFFCC" uuid="3c851099-20f2-4a3c-857c-91574a0279e9"/>
+				<textFieldExpression><![CDATA[$F{event}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="339" y="34" width="79" height="20" uuid="ab9d5fb8-c6d9-443b-9ad7-5614cf143208"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="418" y="34" width="56" height="20" uuid="21370019-004d-40b0-ac63-1315d981b559"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

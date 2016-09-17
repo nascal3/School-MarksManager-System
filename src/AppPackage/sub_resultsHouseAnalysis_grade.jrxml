@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sub_resultsHouseAnalysis_grade" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ab895af8-72ce-4cd0-85b1-c40ed8fcc8e8">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="avarage" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[select case
+when $P{avarage} <= 29.5 then "E"
+when $P{avarage} >= 29.6 and $P{avarage} <= 34.5 then "D-"
+when $P{avarage} >= 34.6 and $P{avarage} <= 39.5 then "D"
+when $P{avarage} >= 39.6 and $P{avarage} <= 44.5 then "D+"
+when $P{avarage} >= 44.6 and $P{avarage} <= 49.5 then "C-"
+when $P{avarage} >= 49.6 and $P{avarage} <= 54.5 then "C"
+when $P{avarage} >= 54.6 and $P{avarage} <= 59.5 then "C+"
+when $P{avarage} >= 59.6 and $P{avarage} <= 64.5 then "B-"
+when $P{avarage} >= 64.6 and $P{avarage} <= 69.5 then "B"
+when $P{avarage} >= 69.6 and $P{avarage} <= 74.5 then "B+"
+when $P{avarage} >= 74.6 and $P{avarage} <= 79.5 then "A-"
+when $P{avarage} >= 79.6 then "A"
+else "" end as 'grade'
+from final_marks limit 1]]>
+	</queryString>
+	<field name="grade" class="java.lang.Object"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="53" height="20" uuid="e8ab5f93-133d-4b3e-8568-db103c1e8565"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
