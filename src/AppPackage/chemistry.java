@@ -253,40 +253,40 @@ public class chemistry {
                   pst.setString(10, gender);
                   int avg_m = Integer.parseInt(mainFrame.txt_finalMarksChe.getText());
                   
-                          if (avg_m <=24.5){
+                          if (avg_m <=24){
                             pst.setString(9, "E");   
                             pst.setString(11, "Put in more effort.");
-                          }else if((avg_m >=24.6) && (avg_m <=29.5) ){
+                          }else if((avg_m >=25) && (avg_m <=29) ){
                             pst.setString(9, "D-");   
                             pst.setString(11, "Must work hard.");
-                          }else if((avg_m >=29.6) && (avg_m <=34.5) ){
+                          }else if((avg_m >=30) && (avg_m <=34) ){
                             pst.setString(9, "D"); 
                             pst.setString(11, "You need to work.");
-                          }else if((avg_m >=34.6) && (avg_m <=39.5) ){
+                          }else if((avg_m >=35) && (avg_m <=39) ){
                             pst.setString(9, "D+"); 
                             pst.setString(11, "Work hard.");
-                          }else if((avg_m >=39.6) && (avg_m <=44.5) ){
+                          }else if((avg_m >=40) && (avg_m <=44) ){
                             pst.setString(9, "C-");
                             pst.setString(11, "Work hard.");
-                          }else if((avg_m >=44.6) && (avg_m <=49.5) ){
+                          }else if((avg_m >=45) && (avg_m <=49) ){
                             pst.setString(9, "C");
                             pst.setString(11, "You have potential.");
-                          }else if((avg_m >=49.6) && (avg_m <=54.5) ){
+                          }else if((avg_m >=50) && (avg_m <=54) ){
                             pst.setString(9, "C+");
                             pst.setString(11, "Average.");
-                          }else if((avg_m >=54.6) && (avg_m <=59.5) ){
+                          }else if((avg_m >=55) && (avg_m <=59) ){
                             pst.setString(9, "B-"); 
                             pst.setString(11, "Fair.");
-                          }else if((avg_m >=59.6) && (avg_m <=64.5) ){
+                          }else if((avg_m >=60) && (avg_m <=64) ){
                             pst.setString(9, "B"); 
                             pst.setString(11, "Aim higher.");
-                          }else if((avg_m >=64.6) && (avg_m <=69.5) ){
+                          }else if((avg_m >=65) && (avg_m <=69) ){
                             pst.setString(9, "B+"); 
                             pst.setString(11, "Very good.");
-                          }else if((avg_m >=69.6) && (avg_m <=74.5) ){
+                          }else if((avg_m >=70) && (avg_m <=74) ){
                             pst.setString(9, "A-"); 
                             pst.setString(11, "Very good.");
-                          }else if(avg_m >=74.6){
+                          }else if(avg_m >=75){
                             pst.setString(9, "A");  
                             pst.setString(11, "Excellent!.");
                           }
