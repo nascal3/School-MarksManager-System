@@ -10,43 +10,49 @@
 	<parameter name="term" class="java.lang.String"/>
 	<parameter name="class" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select admin_nos,class,term,year,avarage from final_marks where admin_nos = $P{admin_num} and year = $P{year} and term = $P{term} and class = $P{class} order by class asc,term asc, year asc]]>
+		<![CDATA[select year,avarage,max(term) as 'term',case when class is null then 1 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 1
+union
+select year,avarage,max(term) as 'term',case when class is null then 2 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 2
+union
+select year,avarage,max(term) as 'term',case when class is null then 3 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 3
+union
+select year,avarage,max(term) as 'term',case when class is null then 4 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 4 order by class asc;]]>
 	</queryString>
-	<field name="admin_nos" class="java.lang.Object"/>
-	<field name="class" class="java.lang.Object"/>
-	<field name="term" class="java.lang.Object"/>
 	<field name="year" class="java.lang.Object"/>
 	<field name="avarage" class="java.lang.Object"/>
+	<field name="term" class="java.lang.Object"/>
+	<field name="class" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
 		<band height="143" splitType="Stretch">
-			<xyLineChart>
+			<barChart>
 				<chart>
-					<reportElement x="19" y="8" width="200" height="129" uuid="50c1c640-5f3a-4add-9890-5a50a77f47bc"/>
+					<reportElement x="13" y="8" width="341" height="129" uuid="d378d387-dadf-4e7c-9248-0dd1f9b470a7"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
-				<xyDataset>
-					<xySeries>
+				<categoryDataset>
+					<categorySeries>
 						<seriesExpression><![CDATA["Form "+$F{class}]]></seriesExpression>
-						<xValueExpression><![CDATA[$F{term}]]></xValueExpression>
-						<yValueExpression><![CDATA[$F{avarage}]]></yValueExpression>
-						<labelExpression><![CDATA["Term"]]></labelExpression>
-					</xySeries>
-				</xyDataset>
-				<linePlot>
+						<categoryExpression><![CDATA[$F{class}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{avarage}]]></valueExpression>
+						<labelExpression><![CDATA["Class"]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
 					<plot/>
+					<itemLabel/>
 					<categoryAxisFormat>
 						<axisFormat/>
 					</categoryAxisFormat>
 					<valueAxisFormat>
 						<axisFormat/>
 					</valueAxisFormat>
-				</linePlot>
-			</xyLineChart>
+				</barPlot>
+			</barChart>
 		</band>
 	</detail>
 </jasperReport>

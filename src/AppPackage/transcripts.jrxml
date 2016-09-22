@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="transcripts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a4ce32a-e9ef-4534-b33c-13c5e0f99d7e">
 	<property name="ireport.zoom" value="1.100000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="95"/>
+	<property name="ireport.y" value="430"/>
 	<import value="net.sf.jasperreports.engine.util.JRImageLoader"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\"]]></defaultValueExpression>
@@ -61,8 +61,8 @@
 (select students.[kcpe_marks] from students where students.[admin_nos]=final_marks.[admin_nos]) as 'kcpe_marks',
 (select students.[pic] from students where students.[admin_nos]=final_marks.[admin_nos]) as 'pic',
 
-(select COUNT(id) from final_marks where class = 1 and class_name = 'East' and term = '1' and year = '2015') as 'pop'
-from final_marks where final_marks.class = 1 and final_marks.class_name = 'East' and final_marks.term = '1' and final_marks.year = '2015' order by avarage desc]]>
+(select COUNT(id) from final_marks where class = 2 and class_name = 'East' and term = '2' and year = '2016') as 'pop'
+from final_marks where final_marks.class = 2 and final_marks.class_name = 'East' and final_marks.term = '2' and final_marks.year = '2016' order by avarage desc]]>
 	</queryString>
 	<field name="id" class="java.lang.Object"/>
 	<field name="name" class="java.lang.Object"/>
@@ -305,7 +305,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\transcripts_vap.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\transcripts_vap.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement x="122" y="22" width="66" height="14" uuid="5d74fce2-4ddc-4dce-a12c-fd911370771f"/>
@@ -1608,7 +1608,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\transcripts_trend.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\transcripts_trend.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement x="442" y="288" width="95" height="17" uuid="bdf78245-ae62-4ce3-baa7-9f430cd5f9fd"/>
@@ -1623,7 +1623,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{admin_nos}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\position_range.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\position_range.jasper"]]></subreportExpression>
 			</subreport>
 			<textField isBlankWhenNull="true">
 				<reportElement x="306" y="50" width="118" height="18" uuid="ef876922-fe93-4162-8909-4a05a13c87eb"/>
@@ -1812,7 +1812,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{term}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\transcripts_lastMean.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\transcripts_lastMean.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
 				<reportElement x="346" y="336" width="59" height="17" uuid="f8dc45aa-aeaf-4016-8485-abdbd81f6db5"/>
@@ -1820,7 +1820,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{admin_nos}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\transcripts_lastCalssP.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\transcripts_lastCalssP.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement x="279" y="337" width="68" height="18" uuid="d8e12041-796d-4e99-aaf5-29ae3ce7f27d"/>
@@ -1835,7 +1835,7 @@ from final_marks where final_marks.class = 1 and final_marks.class_name = 'East'
 					<subreportParameterExpression><![CDATA[$F{admin_nos}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\transcripts_lastFormP.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Admn\\Documents\\NetBeansProjects\\marksmanager\\src\\AppPackage\\transcripts_lastFormP.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
