@@ -29,7 +29,7 @@ select year,avarage,max(term) as 'term',case when class is null then 4 else clas
 		<band height="143" splitType="Stretch">
 			<barChart>
 				<chart>
-					<reportElement x="13" y="8" width="341" height="129" uuid="d378d387-dadf-4e7c-9248-0dd1f9b470a7"/>
+					<reportElement x="13" y="8" width="272" height="129" uuid="d378d387-dadf-4e7c-9248-0dd1f9b470a7"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
