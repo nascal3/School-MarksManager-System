@@ -10,26 +10,20 @@
 	<parameter name="term" class="java.lang.String"/>
 	<parameter name="class" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select year,avarage,max(term) as 'term',case when class is null then 1 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 1
-union
-select year,avarage,max(term) as 'term',case when class is null then 2 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 2
-union
-select year,avarage,max(term) as 'term',case when class is null then 3 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 3
-union
-select year,avarage,max(term) as 'term',case when class is null then 4 else class end as 'class' from final_marks where admin_nos = $P{admin_num} and class = 4 order by class asc;]]>
+		<![CDATA[select  class, term, year,avarage from final_marks where admin_nos = $P{admin_num} and class = $P{class} and year = $P{year}]]>
 	</queryString>
+	<field name="class" class="java.lang.Object"/>
+	<field name="term" class="java.lang.Object"/>
 	<field name="year" class="java.lang.Object"/>
 	<field name="avarage" class="java.lang.Object"/>
-	<field name="term" class="java.lang.Object"/>
-	<field name="class" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<detail>
-		<band height="143" splitType="Stretch">
-			<barChart>
+	<summary>
+		<band height="150">
+			<lineChart>
 				<chart>
-					<reportElement x="13" y="8" width="272" height="129" uuid="d378d387-dadf-4e7c-9248-0dd1f9b470a7"/>
+					<reportElement x="12" y="11" width="270" height="129" uuid="afee83c7-be15-4489-ab5b-6899df05535d"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -37,22 +31,21 @@ select year,avarage,max(term) as 'term',case when class is null then 4 else clas
 				<categoryDataset>
 					<categorySeries>
 						<seriesExpression><![CDATA["Form "+$F{class}]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{class}]]></categoryExpression>
+						<categoryExpression><![CDATA[$F{term}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{avarage}]]></valueExpression>
-						<labelExpression><![CDATA["Class"]]></labelExpression>
+						<labelExpression><![CDATA["Avarage"]]></labelExpression>
 					</categorySeries>
 				</categoryDataset>
-				<barPlot>
+				<linePlot>
 					<plot/>
-					<itemLabel/>
 					<categoryAxisFormat>
 						<axisFormat/>
 					</categoryAxisFormat>
 					<valueAxisFormat>
 						<axisFormat/>
 					</valueAxisFormat>
-				</barPlot>
-			</barChart>
+				</linePlot>
+			</lineChart>
 		</band>
-	</detail>
+	</summary>
 </jasperReport>
