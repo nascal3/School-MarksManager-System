@@ -3843,7 +3843,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_engMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4018,7 +4018,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_kisMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4200,7 +4200,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_mathMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4382,7 +4382,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_phyMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4563,7 +4563,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_cheMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4745,7 +4745,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // resul is the new value to insert in the DB
                 String marks = tbl_bioMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -4925,7 +4925,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // result is the new value to insert in the DB
                 String marks = tbl_hisMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -5105,7 +5105,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // result is the new value to insert in the DB
                 String marks = tbl_geoMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -5285,8 +5285,10 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // result is the new value to insert in the DB
                 String marks = tbl_creMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
-                markx = Integer.parseInt(marks);
+                if(marks.isEmpty()){ 
+                   markx = 0; 
+                }else{
+                   markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
                 String admin_nos = tbl_creMarks.getValueAt(row, 0).toString();
@@ -5465,7 +5467,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // result is the new value to insert in the DB
                 String marks = tbl_agrMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB
@@ -5650,7 +5652,7 @@ public class mainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 // result is the new value to insert in the DB
                 String marks = tbl_bsMarks.getValueAt(row, column).toString().trim();
                 int markx = 0;
-                if(marks.isEmpty()){  }else{
+                if(marks.isEmpty()){ markx = 0; }else{
                 markx = Integer.parseInt(marks);
                 }
                 // id is the primary key of my DB

@@ -1845,7 +1845,7 @@
                               <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="combo_classNameMarksCRE" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="94" max="32767" attributes="0"/>
                               <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="chooser_marksYearCRE" min="-2" max="-2" attributes="0"/>

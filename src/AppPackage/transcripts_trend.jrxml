@@ -31,7 +31,7 @@
 				<categoryDataset>
 					<categorySeries>
 						<seriesExpression><![CDATA["Form "+$F{class}]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{term}]]></categoryExpression>
+						<categoryExpression><![CDATA["Term "+$F{term}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{avarage}]]></valueExpression>
 						<labelExpression><![CDATA["Avarage"]]></labelExpression>
 					</categorySeries>
