@@ -54,7 +54,7 @@
 (select raw_marks.buisness_studies from raw_marks where exam_type = 'MD' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_CAT2',
 (select raw_marks.buisness_studies from raw_marks where exam_type = 'ED' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_END',
 
-(select rank.[c_avarage] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_avg',
+(select avg(total) from final_marks where class=2 and class_name ='East' and term= 3 and year=2016) as 'c_avg',
 (select rank.[c_grade] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_grade',
 (select avg(rank.[c_avarage]) from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_avg',
 (select rank.[f_grade] from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_grade',

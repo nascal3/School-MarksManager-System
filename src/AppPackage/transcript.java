@@ -144,7 +144,7 @@ public class transcript extends SwingWorker<Void, Void>{
                                jd = JRXmlLoader.load("jxml\\transcripts2.jrxml");
                            }
                                                         
-                    //"C:\Users\home\Documents\NetBeansProjects\MarksManagement\src"
+                    //"C:\Users\home\Documents\NetBeansProjects\MarksManagement\src\AppPackage"
                     String sql = "select *,\n" +
 "(select raw_marks.english from raw_marks where exam_type = 'EN' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'eng_CAT1',\n" +
 "(select raw_marks.english from raw_marks where exam_type = 'MD' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'eng_CAT2',\n" +
@@ -190,7 +190,7 @@ public class transcript extends SwingWorker<Void, Void>{
 "(select raw_marks.buisness_studies from raw_marks where exam_type = 'MD' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_CAT2',\n" +
 "(select raw_marks.buisness_studies from raw_marks where exam_type = 'ED' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_END',\n" +
                             
-"(select rank.[c_avarage] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_avg',\n" +
+"(select avg(total) from final_marks where class = '"+classx+"' and class_name = '"+className+"' and term = '"+term+"' and year = '"+year+"') as 'c_avg',\n" +
 "(select rank.[c_grade] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_grade',\n" +
 "(select rank.[f_avarage] from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_avg',\n" +
 "(select rank.[f_grade] from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_grade',\n" +

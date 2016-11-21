@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="transcripts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a4ce32a-e9ef-4534-b33c-13c5e0f99d7e">
 	<property name="ireport.zoom" value="1.100000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="478"/>
+	<property name="ireport.y" value="395"/>
 	<import value="net.sf.jasperreports.engine.util.JRImageLoader"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\home\\Documents\\NetBeansProjects\\MarksManagement\\src\\"]]></defaultValueExpression>
@@ -54,15 +54,15 @@
 (select raw_marks.buisness_studies from raw_marks where exam_type = 'MD' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_CAT2',
 (select raw_marks.buisness_studies from raw_marks where exam_type = 'ED' and raw_marks.[admin_nos] = final_marks.[admin_nos] and raw_marks.[class] = final_marks.[class] and raw_marks.[class_name] = final_marks.[class_name] and raw_marks.[term] = final_marks.[term] and raw_marks.[year] = final_marks.[year]) as 'bs_END',
 
-(select rank.[c_avarage] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_avg',
+(select avg(total) from final_marks where class=2 and class_name ='East' and term= 3 and year=2016) as 'c_avg',
 (select rank.[c_grade] from rank where rank.[class]=final_marks.[class] and rank.[class_name]=final_marks.[class_name] and rank.[year]=final_marks.[year]) as 'c_grade',
 (select avg(rank.[c_avarage]) from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_avg',
 (select rank.[f_grade] from rank where rank.[class]=final_marks.[class] and rank.[year]=final_marks.[year]) as 'f_grade',
 (select students.[kcpe_marks] from students where students.[admin_nos]=final_marks.[admin_nos]) as 'kcpe_marks',
 (select students.[pic] from students where students.[admin_nos]=final_marks.[admin_nos]) as 'pic',
 
-(select COUNT(id) from final_marks where class = 2 and class_name = 'East' and term = '2' and year = '2016') as 'pop'
-from final_marks where final_marks.class = 2 and final_marks.class_name = 'East' and final_marks.term = '2' and final_marks.year = '2016' order by avarage desc]]>
+(select COUNT(id) from final_marks where class = 2 and class_name = 'East' and term = '3' and year = '2016') as 'pop'
+from final_marks where final_marks.class = 2 and final_marks.class_name = 'East' and final_marks.term = '3' and final_marks.year = '2016' order by avarage desc]]>
 	</queryString>
 	<field name="id" class="java.lang.Object"/>
 	<field name="name" class="java.lang.Object"/>
